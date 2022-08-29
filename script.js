@@ -1,3 +1,4 @@
+// Buttons selector
 let numButtons = document.querySelectorAll(".grid-layout #num");
 let operatorButtons = document.querySelectorAll(".grid-layout #operator");
 let divideBtn = document.querySelector(".divide");
@@ -9,28 +10,27 @@ let equalBtn = document.querySelector(".evaluate");
 let clearBtn = document.querySelector(".clear");
 let deleteBtn = document.querySelector(".delete");
 
-let pastOperator = function (x, y){
-    return x;
-};
+// Turn on initial numpad
 let initialNumpad = true;
-let clearNum2 = false;
 
+// Display selector
 let currentDisplay = document.querySelector(".current-display");
 let bgDisplay = document.querySelector(".background-display");
 
+// Initialize num1 and num2
+initializeAll();
 
-let num1String = "";
-let num2String = "";
-let num1 = 0;
-let num2 = ''
-console.log(numButtons);
+// Initialize pastOperator
+let pastOperator = function (x, y){
+    return x;
+};
 
 for (numBtn of numButtons) {
     numBtn.addEventListener("click", (e) => {
         if (initialNumpad){
             num1String += e.target.textContent;
             console.log(`num1string: ${num1String}`);
-            num1 = parseInt(num1String);    
+            num1 = parseFloat(num1String);    
             currentDisplay.textContent = num1String;
         }
     })
@@ -39,16 +39,17 @@ for (numBtn of numButtons) {
 
 function numpad(){
     for (numBtn of numButtons) {
-        numBtn.addEventListener("click", (e) => {
-            if (!initialNumpad){
-                num2String += e.target.textContent;
-                num2 = parseInt(num2String);
-                currentDisplay.textContent = num2;
-    
-                console.log(`num2string:${num2String}`);
-                console.log(`num2:${num2}`);
-            }
-        })
+        numBtn.addEventListener("click", getNum2)
+    }
+}
+function getNum2(e) {
+    if (!initialNumpad){
+        num2String += e.target.textContent;
+        num2 = parseFloat(num2String);
+        currentDisplay.textContent = num2String;
+
+        console.log(`num2string:${num2String}`);
+        console.log(`num2:${num2}`);
     }
 }
 
@@ -74,6 +75,31 @@ equalBtn.addEventListener("click", (e) => {
 
 clearBtn.addEventListener("click", (e) => {
     initializeAll();
+})
+
+deleteBtn.addEventListener("click", () => {
+    console.log("delete");
+    if(initialNumpad){
+        num1String = num1String.slice(0, -1);
+        num1 = parseFloat(num1String);
+        currentDisplay.textContent = num1String;
+    }
+    else {
+        num2String = num2String.slice(0, -1);
+        num2 = parseFloat(num2String);
+        currentDisplay.textContent = num2String;
+    }
+})
+
+decimalBtn.addEventListener("click", () => {
+    if (initialNumpad) {
+        num1String += ".";
+        currentDisplay.textContent = num1String;
+    }
+    else {
+        num2String += ".";
+        currentDisplay.textContent = num2String;
+    }
 })
 function add(x, y) {
     return x  + y;
@@ -117,7 +143,6 @@ function process(operator,sign) {
 
         console.log(`num1: ${num1}`);
 
-        // clearNum2 = true;
         num2String = "";
         num2 = 0;
         currentDisplay.textContent = num2;
@@ -129,8 +154,7 @@ function initializeAll() {
     num1 = 0;
     num2String = "";
     num2 = 0;
+    currentDisplay.textContent = num1;
     initialNumpad = true;
-
     console.log("AC");
-
 }
