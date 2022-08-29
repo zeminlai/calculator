@@ -27,7 +27,7 @@ let pastOperator = function (x, y){
 
 for (numBtn of numButtons) {
     numBtn.addEventListener("click", (e) => {
-        if (initialNumpad){
+        if (initialNumpad && (num1String.length <= 15)){
             num1String += e.target.textContent;
             console.log(`num1string: ${num1String}`);
             num1 = parseFloat(num1String);    
@@ -43,7 +43,7 @@ function numpad(){
     }
 }
 function getNum2(e) {
-    if (!initialNumpad){
+    if ((!initialNumpad) && (num2String.length <= 15)){
         num2String += e.target.textContent;
         num2 = parseFloat(num2String);
         currentDisplay.textContent = num2String;
