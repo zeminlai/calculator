@@ -42,7 +42,7 @@ mulBtn.addEventListener("click", () => {
 });
 
 equalBtn.addEventListener("click", (e) => {
-    let result = operate(pastOperator, num1, num2);
+    let result = operate(pastOperator, parseFloat(num1), parseFloat(num2));
     
     // If result have decimal places, fix it to 5 dp
     if (result % 1 != 0) result = result.toFixed(5);
@@ -54,7 +54,7 @@ equalBtn.addEventListener("click", (e) => {
 
     // Set num2 and num2String to result for delete feature after equal
     num2String = result.toString();
-    num2 = result;
+    num2 = parseFloat(result);
     pastOperator = equal;
 })
 
