@@ -19,7 +19,7 @@ body {
     justify-content: space-evenly;
     /* align-items: center; */
     background-color: #2C3E50;
-    height: 550px;
+    height: 600px;
     border-radius: 15px;
 }
 
@@ -28,7 +28,7 @@ body {
     width: 400px;
     height: 100px;
     background-color: lightgrey;
-    margin: 10px;
+    margin: 20px 10px 10px 10px;
     padding: 10px;
     border-radius: 15px;
     display: flex;
@@ -38,17 +38,36 @@ body {
 }
 
 .current-display {
+    /* direction: rtl;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden; */
     font-size: 50px ;
+    /* text-overflow: ellipsis; */
 }
-.buttons {
-    margin: 10px;
 
-    /* background-color: green;
-    flex: 1 1 auto; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center; */
+.background-display {
+    font-size: 20px;
+}
+/* .resultDisplay {
+    direction: ltr;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+} */
+.buttons {
+    margin:10px;
+}
+.buttons button {
+    color: white;
+    font-size: 20px;
+}
+.buttons button:hover {
+    filter: brightness(95%);
+}
+
+.buttons button:active {
+    filter: brightness(80%);
 }
 
 .clear-buttons {

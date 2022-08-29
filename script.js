@@ -16,7 +16,7 @@ let initialNumpad = true;
 // Display selector
 let currentDisplay = document.querySelector(".current-display");
 let bgDisplay = document.querySelector(".background-display");
-
+let resultBgDisplay = "";
 // Initialize num1 and num2
 initializeAll();
 
@@ -68,8 +68,9 @@ mulBtn.addEventListener("click", (e) => {
 
 equalBtn.addEventListener("click", (e) => {
     let result = operate(pastOperator, num1, num2);
+    if (result % 1 != 0) result = result.toFixed(5);
     console.log(`result: ${result}`);
-    bgDisplay.textContent = "";
+    bgDisplay.textContent = resultBgDisplay + num2;
     currentDisplay.textContent = result;
 })
 
@@ -128,8 +129,9 @@ function process(operator,sign) {
 
         console.log(operator);
 
-        bgDisplay.textContent = num1;
-        currentDisplay.textContent = num1String + sign
+        bgDisplay.textContent = num1String + sign;
+        currentDisplay.textContent = num1String + sign;
+        resultBgDisplay = num1String + sign;
         numpad(num2String);
     }
     else{
@@ -139,6 +141,7 @@ function process(operator,sign) {
 
         num1 = operate(pastOperator, num1, num2);
         bgDisplay.textContent = num1 + sign;
+        resultBgDisplay = num1 + sign;
         pastOperator = operator;
 
         console.log(`num1: ${num1}`);
@@ -155,6 +158,7 @@ function initializeAll() {
     num2String = "";
     num2 = 0;
     currentDisplay.textContent = num1;
+    bgDisplay.textContent = 0;
     initialNumpad = true;
     console.log("AC");
 }
