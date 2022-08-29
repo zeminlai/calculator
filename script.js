@@ -46,7 +46,9 @@ equalBtn.addEventListener("click", (e) => {
     
     // If result have decimal places, fix it to 5 dp
     if (result % 1 != 0) result = result.toFixed(5);
-    
+    // Set the decimal place to 6 of exponential number
+    result = result.toPrecision(1 + 6);
+
     // Display section
     console.log(`result: ${result}`);
     bgDisplay.textContent = `${resultBgDisplay} ${num2} =`;
