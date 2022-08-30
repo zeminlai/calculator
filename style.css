@@ -39,12 +39,11 @@ body {
 }
 
 .current-display {
-    /* direction: rtl;
     max-width: 400px;
-    white-space: nowrap;
-    overflow: hidden; */
     font-size: 50px ;
-    /* text-overflow: ellipsis; */
+    /* white-space: nowrap;
+    overflow: scroll;
+    text-overflow:clip; */
 }
 
 .background-display {

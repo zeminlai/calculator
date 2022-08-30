@@ -47,7 +47,11 @@ equalBtn.addEventListener("click", (e) => {
     // If result have decimal places, fix it to 5 dp
     if (result % 1 != 0) result = result.toFixed(5);
     // Set the decimal place to 6 of exponential number
-    result = result.toPrecision(1 + 6);
+    // result = result.toPrecision(1 + 6);
+    if (result.toString().length >= 15){
+        currentDisplay.style = "white-space: nowrap;overflow: scroll;text-overflow:clip";
+    }
+    else currentDisplay.style = "white-space: nowrap;overflow: visible;text-overflow:clip";
 
     // Display section
     console.log(`result: ${result}`);
@@ -191,6 +195,7 @@ function decimal(){
 }
 
 function initializeAll() {
+    currentDisplay.style = "white-space: nowrap;overflow: visible;text-overflow:clip";
     num1String = "";
     num1 = 0;
     num2String = "";
