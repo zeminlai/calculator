@@ -6,6 +6,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #CCD1D8;
+    font-family: 'Roboto Mono', monospace;
 }
 
 /* Header */
